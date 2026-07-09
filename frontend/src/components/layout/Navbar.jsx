@@ -96,11 +96,11 @@ function Navbar() {
           e.currentTarget.style.background = "none";
         }}
       >
-        🏠 Home
+        Home
       </a>
 
       {/* Nav links */}
-      <div style={{ display: "flex", alignItems: "stretch", flex: 1, overflowX: "auto" }}>
+      <div style={{ display: "flex", alignItems: "stretch", flex: 1, overflowX: "hidden" }}>
         {menus.map((menu) => {
           const isActive = location.pathname === menu.path;
           return (
