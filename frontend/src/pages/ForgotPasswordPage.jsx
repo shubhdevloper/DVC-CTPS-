@@ -75,18 +75,6 @@ const handleNext = async () => {
             />
           </div>
 
-          <div className="bg-yellow-100 border border-yellow-300 p-3 rounded text-sm">
-
-            <strong>
-              Recovery Password:
-            </strong>
-
-            <br />
-
-            DVC-RESET-2026
-
-          </div>
-
           <div>
             <label className="block mb-2 font-semibold">
               Enter Recovery Password
