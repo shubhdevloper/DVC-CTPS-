@@ -40,12 +40,13 @@ function Header() {
       <div style={{
         background: "#fff",
         borderBottom: "3px solid #003087",
-        padding: "10px 20px",
+        padding: "8px 20px",
         display: "flex",
         alignItems: "center",
         gap: "18px",
+        overflow: "hidden",
       }}>
-        <img src={logo} alt="DVC Logo" style={{ height: "72px", width: "auto" }} />
+        <img src={logo} alt="DVC Logo" style={{ height: "60px", width: "auto", display: "block", flexShrink: 0 }} />
 
         <div>
           <div style={{ fontSize: "20px", fontWeight: 700, color: "#003087", lineHeight: 1.2 }}>
