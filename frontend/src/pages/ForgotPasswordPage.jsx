@@ -13,7 +13,7 @@ function ForgotPasswordPage() {
 const handleNext = async () => {
   try {
     await axios.post(
-      "http://10.53.49.228:5000/api/auth/forgot-password",
+      "https://dvc-ctps.onrender.com/api/auth/forgot-password",
       {
         username,
         defaultPassword:

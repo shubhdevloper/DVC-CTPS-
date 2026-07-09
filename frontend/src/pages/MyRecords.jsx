@@ -36,12 +36,12 @@ function MyRecordsPage() {
         const token = localStorage.getItem("ctps_token");
 
         const incomingResponse = await axios.get(
-          "http://10.53.49.228:5000/api/incoming",
+          "https://dvc-ctps.onrender.com/api/incoming",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
         const outgoingResponse = await axios.get(
-          "http://10.53.49.228:5000/api/outgoing",
+          "https://dvc-ctps.onrender.com/api/outgoing",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

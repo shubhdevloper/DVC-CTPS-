@@ -12,7 +12,7 @@ function AnnouncementTicker() {
     try {
       const token = localStorage.getItem("ctps_token");
       const { data } = await axios.get(
-        "http://10.53.49.228:5000/api/announcements",
+        "https://dvc-ctps.onrender.com/api/announcements",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setAnnouncements(data);

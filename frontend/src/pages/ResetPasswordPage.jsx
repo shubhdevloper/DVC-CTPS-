@@ -64,7 +64,7 @@ const handleResetPassword = async () => {
 
   try {
     await axios.post(
-      "http://10.53.49.228:5000/api/auth/reset-password",
+      "https://dvc-ctps.onrender.com/api/auth/reset-password",
       {
         username,
         newPassword:

@@ -48,7 +48,7 @@ useEffect(() => {
 
       const incomingResponse =
         await axios.get(
-          "http://10.53.49.228:5000/api/incoming",
+          "https://dvc-ctps.onrender.com/api/incoming",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ useEffect(() => {
 
       const outgoingResponse =
         await axios.get(
-          "http://10.53.49.228:5000/api/outgoing",
+          "https://dvc-ctps.onrender.com/api/outgoing",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -125,7 +125,7 @@ useEffect(() => {
 
       const activitiesResponse =
   await axios.get(
-    "http://10.53.49.228:5000/api/activities",
+    "https://dvc-ctps.onrender.com/api/activities",
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -68,7 +68,7 @@ const handleSubmit = async (e) => {
       );
 
     await axios.post(
-      "http://10.53.49.228:5000/api/incoming",
+      "https://dvc-ctps.onrender.com/api/incoming",
       {
         vehicleNo:
           formData.vehicleNo,

@@ -54,7 +54,7 @@ function IncomingPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       const response = await axios.get(
-        "http://10.53.49.228:5000/api/incoming",
+        "https://dvc-ctps.onrender.com/api/incoming",
         {
           headers: {
             Authorization: `Bearer ${token}`,

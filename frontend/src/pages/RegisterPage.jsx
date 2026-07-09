@@ -55,7 +55,7 @@ const handleRegister = async () => {
 
     const response =
       await axios.post(
-        "http://10.53.49.228:5000/api/auth/register",
+        "https://dvc-ctps.onrender.com/api/auth/register",
         {
           fullName,
           username,

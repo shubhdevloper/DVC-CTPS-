@@ -33,7 +33,7 @@ function UsersPage() {
   const refreshUsers = async () => {
     try {
       const response = await axios.get(
-        "http://10.53.49.228:5000/api/users",
+        "https://dvc-ctps.onrender.com/api/users",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const allUsers = response.data;
@@ -51,7 +51,7 @@ function UsersPage() {
   const handleApproveManager = async (id) => {
     try {
       await axios.patch(
-        `http://10.53.49.228:5000/api/users/${id}/approve`,
+        `https://dvc-ctps.onrender.com/api/users/${id}/approve`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -64,7 +64,7 @@ function UsersPage() {
   const handleRejectManager = async (id) => {
     try {
       await axios.patch(
-        `http://10.53.49.228:5000/api/users/${id}/reject`,
+        `https://dvc-ctps.onrender.com/api/users/${id}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -77,7 +77,7 @@ function UsersPage() {
   const handleToggleStatus = async (id) => {
     try {
       await axios.patch(
-        `http://10.53.49.228:5000/api/users/${id}/toggle-status`,
+        `https://dvc-ctps.onrender.com/api/users/${id}/toggle-status`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -94,7 +94,7 @@ function UsersPage() {
     if (!confirmDelete) return;
     try {
       await axios.delete(
-        `http://10.53.49.228:5000/api/users/${id}`,
+        `https://dvc-ctps.onrender.com/api/users/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       refreshUsers();

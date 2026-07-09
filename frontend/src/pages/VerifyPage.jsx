@@ -31,11 +31,11 @@ function VerifyPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       const incomingResponse = await axios.get(
-        "http://10.53.49.228:5000/api/incoming",
+        "https://dvc-ctps.onrender.com/api/incoming",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const outgoingResponse = await axios.get(
-        "http://10.53.49.228:5000/api/outgoing",
+        "https://dvc-ctps.onrender.com/api/outgoing",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setIncomingRecords(
@@ -57,7 +57,7 @@ function VerifyPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       await axios.patch(
-        `http://10.53.49.228:5000/api/incoming/${id}/verify`,
+        `https://dvc-ctps.onrender.com/api/incoming/${id}/verify`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -73,7 +73,7 @@ function VerifyPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       await axios.patch(
-        `http://10.53.49.228:5000/api/incoming/${id}/reject`,
+        `https://dvc-ctps.onrender.com/api/incoming/${id}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -89,7 +89,7 @@ function VerifyPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       await axios.patch(
-        `http://10.53.49.228:5000/api/outgoing/${id}/verify`,
+        `https://dvc-ctps.onrender.com/api/outgoing/${id}/verify`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -103,7 +103,7 @@ function VerifyPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       await axios.patch(
-        `http://10.53.49.228:5000/api/outgoing/${id}/reject`,
+        `https://dvc-ctps.onrender.com/api/outgoing/${id}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

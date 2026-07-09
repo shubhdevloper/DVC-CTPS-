@@ -5,7 +5,7 @@ import {
   getIncomingRecords,
   verifyIncomingRecord,
   rejectIncomingRecord
-} from "../controllers/incomingController.js";
+} from "../controllers/IncomingController.js";
 const router = express.Router();
 
 router.post(

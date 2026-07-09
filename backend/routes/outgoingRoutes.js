@@ -5,7 +5,7 @@ import {
   getOutgoingRecords,
   verifyOutgoingRecord,
   rejectOutgoingRecord
-} from "../controllers/outgoingController.js";
+} from "../controllers/OutgoingController.js";
 const router = express.Router();
 
 router.post(

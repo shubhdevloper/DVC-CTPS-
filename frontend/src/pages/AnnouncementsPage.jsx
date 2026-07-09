@@ -21,7 +21,7 @@ function AnnouncementsPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       const { data } = await axios.get(
-        "http://10.53.49.228:5000/api/announcements",
+        "https://dvc-ctps.onrender.com/api/announcements",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setAnnouncements(data);
@@ -48,7 +48,7 @@ function AnnouncementsPage() {
         data.append("pdf", pdfFile);
       }
       await axios.post(
-        "http://10.53.49.228:5000/api/announcements",
+        "https://dvc-ctps.onrender.com/api/announcements",
         data,
         {
           headers: {
@@ -74,7 +74,7 @@ function AnnouncementsPage() {
     try {
       const token = localStorage.getItem("ctps_token");
       await axios.delete(
-        `http://10.53.49.228:5000/api/announcements/${id}`,
+        `https://dvc-ctps.onrender.com/api/announcements/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       fetchAnnouncements();

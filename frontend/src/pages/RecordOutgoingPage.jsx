@@ -57,7 +57,7 @@ function RecordOutgoingPage() {
       const token = localStorage.getItem("ctps_token");
 
       await axios.post(
-        "http://10.53.49.228:5000/api/outgoing",
+        "https://dvc-ctps.onrender.com/api/outgoing",
         {
           vehicleNo: formData.vehicleNo,
           gatePassNo: formData.gatePassNo,
