@@ -79,11 +79,11 @@ function Navbar() {
           padding: "0 13px",
           display: "flex",
           alignItems: "center",
+          alignSelf: "stretch",
           whiteSpace: "nowrap",
           textDecoration: "none",
           borderRight: "1px solid rgba(255,255,255,0.2)",
           marginRight: "6px",
-          height: "100%",
           borderBottom: "3px solid transparent",
           transition: "all 0.15s",
         }}
