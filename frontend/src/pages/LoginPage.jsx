@@ -142,10 +142,10 @@ const handleLogin = async () => {
                 onClick={() =>
                   handleQuickLogin({
                     id: "3",
-                    fullName: "Gate A Security",
+                    fullName: "Gate 1 Security",
                     username: "security",
                     role: "security",
-                    gate: "Gate A",
+                    gate: "Gate 1",
                   })
                 }
                 style={{background:"#003087",color:"#fff",border:"none",borderRadius:"3px",padding:"6px 4px",fontSize:"11px",fontWeight:600,cursor:"pointer"}}

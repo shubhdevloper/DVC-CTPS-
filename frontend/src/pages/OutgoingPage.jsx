@@ -184,11 +184,11 @@ function OutgoingPage() {
                     onChange={(e) => setSelectedGate(e.target.value)}
                   >
                     <option>All Gates</option>
-                    <option>Gate A</option>
-                    <option>Gate B</option>
-                    <option>Gate C</option>
-                    <option>Gate D</option>
-                    <option>Main Gate</option>
+                    <option>Gate 1</option>
+                    <option>Gate 2</option>
+                    <option>Gate 3</option>
+                    <option>Gate 4</option>
+                    <option>Gate 5</option>
                   </select>
                 </div>
 
@@ -239,11 +239,11 @@ function OutgoingPage() {
                     onChange={(e) => setSelectedGate(e.target.value)}
                   >
                     <option>All Gates</option>
-                    <option>Gate A</option>
-                    <option>Gate B</option>
-                    <option>Gate C</option>
-                    <option>Gate D</option>
-                    <option>Main Gate</option>
+                    <option>Gate 1</option>
+                    <option>Gate 2</option>
+                    <option>Gate 3</option>
+                    <option>Gate 4</option>
+                    <option>Gate 5</option>
                   </select>
                 </div>
 
