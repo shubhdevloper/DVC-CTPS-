@@ -30,9 +30,12 @@ function MyRecordsPage() {
     return () => clearInterval(timer);
   }, []);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const loadRecords = async () => {
       try {
+        setLoading(true);
         const token = localStorage.getItem("ctps_token");
 
         const incomingResponse = await axios.get(
@@ -59,10 +62,13 @@ function MyRecordsPage() {
         setFilteredOutgoing(myOutgoing);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     loadRecords();
   }, [user]);
+
 
   const [incomingRecords, setIncomingRecords] = useState([]);
   const [outgoingRecords, setOutgoingRecords] = useState([]);
@@ -183,19 +189,19 @@ function MyRecordsPage() {
       <div className="metrics-row">
         <div className="mcard">
           <div className="ml">Total Records</div>
-          <div className="mv">{totalRecords}</div>
+          <div className="mv">{loading ? "..." : totalRecords}</div>
         </div>
         <div className="mcard yellow">
           <div className="ml">Pending</div>
-          <div className="mv">{pendingCount}</div>
+          <div className="mv">{loading ? "..." : pendingCount}</div>
         </div>
         <div className="mcard green">
           <div className="ml">Verified</div>
-          <div className="mv">{approvedCount}</div>
+          <div className="mv">{loading ? "..." : approvedCount}</div>
         </div>
         <div className="mcard orange">
           <div className="ml">Rejected</div>
-          <div className="mv">{rejectedCount}</div>
+          <div className="mv">{loading ? "..." : rejectedCount}</div>
         </div>
       </div>
 

@@ -17,8 +17,10 @@ const [pendingReview, setPendingReview] =
 const [todayMovements, setTodayMovements] =
   useState(0);
 
-const [recentActivities, setRecentActivities] =
+  const [recentActivities, setRecentActivities] =
   useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -38,110 +40,115 @@ const [recentActivities, setRecentActivities] =
 
     return () => clearInterval(timer);
   }, []);
-useEffect(() => {
-  const loadDashboard = async () => {
-    try {
-      const token =
-        localStorage.getItem(
-          "ctps_token"
+
+  useEffect(() => {
+    const loadDashboard = async () => {
+      try {
+        setLoading(true);
+        const token =
+          localStorage.getItem(
+            "ctps_token"
+          );
+
+        const incomingResponse =
+          await axios.get(
+            "https://dvc-ctps.onrender.com/api/incoming",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+        const outgoingResponse =
+          await axios.get(
+            "https://dvc-ctps.onrender.com/api/outgoing",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+        const incoming =
+          incomingResponse.data;
+
+        const outgoing =
+          outgoingResponse.data;
+
+        setTotalIncoming(
+          incoming.length
         );
 
-      const incomingResponse =
-        await axios.get(
-          "https://dvc-ctps.onrender.com/api/incoming",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+        setTotalOutgoing(
+          outgoing.length
         );
 
-      const outgoingResponse =
-        await axios.get(
-          "https://dvc-ctps.onrender.com/api/outgoing",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
+        const pendingIncoming =
+          incoming.filter(
+            (record) =>
+              record.status ===
+              "Pending"
+          );
+
+        const pendingOutgoing =
+          outgoing.filter(
+            (record) =>
+              record.status ===
+              "Pending"
+          );
+
+        setPendingReview(
+          pendingIncoming.length +
+            pendingOutgoing.length
         );
 
-      const incoming =
-        incomingResponse.data;
+        const today =
+          new Date()
+            .toLocaleDateString(
+              "en-GB"
+            )
+            .replace(/\//g, "-");
 
-      const outgoing =
-        outgoingResponse.data;
+        const todayIncoming =
+          incoming.filter(
+            (record) =>
+              record.date === today
+          );
 
-      setTotalIncoming(
-        incoming.length
-      );
+        const todayOutgoing =
+          outgoing.filter(
+            (record) =>
+              record.date === today
+          );
 
-      setTotalOutgoing(
-        outgoing.length
-      );
-
-      const pendingIncoming =
-        incoming.filter(
-          (record) =>
-            record.status ===
-            "Pending"
+        setTodayMovements(
+          todayIncoming.length +
+            todayOutgoing.length
         );
 
-      const pendingOutgoing =
-        outgoing.filter(
-          (record) =>
-            record.status ===
-            "Pending"
+        const activitiesResponse =
+          await axios.get(
+            "https://dvc-ctps.onrender.com/api/activities",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+        setRecentActivities(
+          activitiesResponse.data
         );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      setPendingReview(
-        pendingIncoming.length +
-          pendingOutgoing.length
-      );
+    loadDashboard();
 
-      const today =
-        new Date()
-          .toLocaleDateString(
-            "en-GB"
-          )
-          .replace(/\//g, "-");
-
-      const todayIncoming =
-        incoming.filter(
-          (record) =>
-            record.date === today
-        );
-
-      const todayOutgoing =
-        outgoing.filter(
-          (record) =>
-            record.date === today
-        );
-
-      setTodayMovements(
-        todayIncoming.length +
-          todayOutgoing.length
-      );
-
-      const activitiesResponse =
-  await axios.get(
-    "https://dvc-ctps.onrender.com/api/activities",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-
-setRecentActivities(
-  activitiesResponse.data
-);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  loadDashboard();
 }, []);
 
 
@@ -164,19 +171,19 @@ setRecentActivities(
       <div className="metrics-row">
         <div className="mcard">
           <div className="ml">Total Incoming</div>
-          <div className="mv">{totalIncoming}</div>
+          <div className="mv">{loading ? "..." : totalIncoming}</div>
         </div>
         <div className="mcard orange">
           <div className="ml">Total Outgoing</div>
-          <div className="mv">{totalOutgoing}</div>
+          <div className="mv">{loading ? "..." : totalOutgoing}</div>
         </div>
         <div className="mcard yellow">
           <div className="ml">Pending Review</div>
-          <div className="mv">{pendingReview}</div>
+          <div className="mv">{loading ? "..." : pendingReview}</div>
         </div>
         <div className="mcard green">
           <div className="ml">Today's Movements</div>
-          <div className="mv">{todayMovements}</div>
+          <div className="mv">{loading ? "..." : todayMovements}</div>
         </div>
       </div>
 
@@ -204,7 +211,9 @@ setRecentActivities(
       <div className="panel">
         <div className="panel-head"><h4>Recent Activities</h4></div>
         <div className="panel-body">
-          {recentActivities.length === 0 ? (
+          {loading ? (
+            <p className="no-records">Loading recent activities...</p>
+          ) : recentActivities.length === 0 ? (
             <p className="no-records">No recent activities found.</p>
           ) : (
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
