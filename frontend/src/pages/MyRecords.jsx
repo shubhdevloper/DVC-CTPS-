@@ -327,6 +327,7 @@ function MyRecordsPage() {
                     <th>Date</th>
                     <th>Time In</th>
                     <th>Vehicle No</th>
+                    <th>Gate Pass No.</th>
                     <th>Material Type</th>
                     <th>Quantity</th>
                     <th>Returnable</th>
@@ -344,6 +345,7 @@ function MyRecordsPage() {
                         <td>{record.date}</td>
                         <td>{record.timeIn || "—"}</td>
                         <td>{record.vehicleNo}</td>
+                        <td>{record.gatePassNo || "—"}</td>
                         <td>{record.materialDescription}</td>
                         <td>{record.quantity}</td>
                         <td>{record.returnable || "—"}</td>
@@ -359,7 +361,7 @@ function MyRecordsPage() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="11">
+                      <td colSpan="12">
                         <div className="no-records">No Incoming Records Found</div>
                       </td>
                     </tr>
@@ -380,6 +382,7 @@ function MyRecordsPage() {
                     <th>Date</th>
                     <th>Time Out</th>
                     <th>Vehicle No</th>
+                    <th>Gate Pass No.</th>
                     <th>Material Type</th>
                     <th>Quantity</th>
                     <th>Returnable</th>
@@ -397,6 +400,7 @@ function MyRecordsPage() {
                         <td>{record.date}</td>
                         <td>{record.timeOut || "—"}</td>
                         <td>{record.vehicleNo}</td>
+                        <td>{record.gatePassNo || "—"}</td>
                         <td>{record.materialDescription}</td>
                         <td>{record.quantity}</td>
                         <td>{record.returnable || "—"}</td>
@@ -412,7 +416,7 @@ function MyRecordsPage() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="11">
+                      <td colSpan="12">
                         <div className="no-records">No Outgoing Records Found</div>
                       </td>
                     </tr>

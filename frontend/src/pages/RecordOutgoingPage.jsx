@@ -44,7 +44,8 @@ function RecordOutgoingPage() {
       formData.quantity.trim() &&
       formData.materialType.trim() &&
       formData.materialDescription.trim() &&
-      formData.authorisedBy.trim();
+      formData.authorisedBy.trim() &&
+      formData.gatePassNo.trim();
 
     if (!isFormValid) {
       setShowValidationError(true);
@@ -144,7 +145,7 @@ function RecordOutgoingPage() {
           {/* Row 2 */}
           <div className="fg3">
             <div className="ff">
-              <label>GATE PASS NO.</label>
+              <label>GATE PASS NO. <span className="req">*</span></label>
               <input type="text" name="gatePassNo" value={formData.gatePassNo} onChange={handleChange} placeholder="Gate pass number" />
             </div>
             <div className="ff">
