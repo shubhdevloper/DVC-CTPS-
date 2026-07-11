@@ -12,6 +12,7 @@ const {
   quantity,
   purpose,
   authorisedBy,
+  returnable,
   remarks,
 } = req.body;
 
@@ -60,6 +61,7 @@ const {
     quantity,
     purpose,
     authorisedBy,
+    returnable,
     remarks,
 
           gate:

@@ -328,6 +328,7 @@ function IncomingPage() {
                   <th>Gate Pass No.</th>
                   <th>Description</th>
                   <th>Quantity</th>
+                  <th>Returnable</th>
                   <th>Destination</th>
                   <th>Authorised By</th>
                   <th>Gate</th>
@@ -346,6 +347,7 @@ function IncomingPage() {
                       <td>{record.gatePassNo}</td>
                       <td>{record.materialDescription}</td>
                       <td>{record.quantity}</td>
+                      <td>{record.returnable || "—"}</td>
                       <td>{record.purpose}</td>
                       <td>{record.authorisedBy}</td>
                       <td>{record.gate}</td>
